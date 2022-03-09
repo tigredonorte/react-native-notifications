@@ -14,11 +14,19 @@ notifications.setNotificationHandler({
 export default function App() {
 
   useEffect(() => {
-    const subscription = notifications.addNotificationReceivedListener((notification) => {
+
+    const backgroundSubs = notifications.addNotificationResponseReceivedListener((notification) => {
+      console.log({ notification }, '================');
+    });
+
+    const foregroundSubs = notifications.addNotificationReceivedListener((notification) => {
       console.log({ notification });
     });
 
-    return () => subscription.remove();
+    return () => {
+      backgroundSubs.remove();
+      foregroundSubs.remove();
+    }
   }, []);
 
   const notify = async() => {
