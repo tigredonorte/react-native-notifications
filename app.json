@@ -26,6 +26,7 @@
       "supportsTablet": true
     },
     "android": {
+      "useNextNotificationsApi": true,
       "package": "com.thomfilg.my_places_mobile",
       "versionCode": 1,
       "adaptiveIcon": {
