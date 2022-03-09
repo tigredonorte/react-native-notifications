@@ -20,6 +20,15 @@
       "fallbackToCacheTimeout": 5000
     },
     "assetBundlePatterns": ["**/*"],
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./src/app/assets/notification-icon.png",
+          "color": "#ffffff"
+        }
+      ]
+    ],
     "ios": {
       "buildNumber": "1.0.0",
       "bundleIdentifier": "com.thomfilg.rn-notifications",
@@ -29,14 +38,13 @@
       "useNextNotificationsApi": true,
       "package": "com.thomfilg.my_places_mobile",
       "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/app/assets/adaptive-icon.png",
         "backgroundColor": "#f1f1f1"
       },
       "permissions": [
-        "ACCESS_FINE_LOCATION",
-        "CAMERA",
-        "WRITE_EXTERNAL_STORAGE"
+        "ACTION_BOOT_COMPLETED"
       ],
       "config": {
         "googleMaps": {
