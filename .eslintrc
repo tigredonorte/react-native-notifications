@@ -1,0 +1,28 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+      "browser": true,
+      "react-native/react-native": true
+  },
+  "plugins": [
+      "react",
+      "react-native"
+  ],
+  "extends": [
+      "plugin:react/recommended"
+  ],
+  "rules": {
+    "array-bracket-spacing": ["error", "always", { "objectsInArrays": false }],
+    "object-curly-spacing": ["error", "always", { "arraysInObjects": false }],
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react/prop-types": ["error", { "ignore": ["navigation"] }],
+    "space-before-function-paren": ["error", "never"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
