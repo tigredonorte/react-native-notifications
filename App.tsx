@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import * as notifications from 'expo-notifications';
@@ -13,6 +13,14 @@ notifications.setNotificationHandler({
 
 export default function App() {
 
+  useEffect(() => {
+    const subscription = notifications.addNotificationReceivedListener((notification) => {
+      console.log({ notification });
+    });
+
+    return () => subscription.remove();
+  }, []);
+
   const notify = async() => {
     const perm = await notifications.requestPermissionsAsync();
     if (!perm.granted) {
@@ -22,7 +30,10 @@ export default function App() {
     const res = await notifications.scheduleNotificationAsync({
       content: {
         title: 'My first notification',
-        body: 'Can i read long notifications? I dont know, but writing this big notification I can test it! '
+        body: 'Can i read long notifications? I dont know, but writing this big notification I can test it! ',
+        data: {
+          foo: 'bar'
+        }
       },
       trigger: {
         seconds: 2
