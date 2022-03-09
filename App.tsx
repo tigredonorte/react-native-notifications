@@ -3,6 +3,14 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import * as notifications from 'expo-notifications';
 
+notifications.setNotificationHandler({
+  handleNotification: async(data) => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true, 
+    shouldSetBadge: true,
+  })
+});
+
 export default function App() {
 
   const notify = async() => {
@@ -17,7 +25,7 @@ export default function App() {
         body: 'Can i read long notifications? I dont know, but writing this big notification I can test it! '
       },
       trigger: {
-        seconds: 10
+        seconds: 2
       }
     });
     console.log(res);
